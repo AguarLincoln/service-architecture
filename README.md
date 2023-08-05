@@ -48,3 +48,7 @@ sail artisan key:generate
 sail artisan nova:publish
 sail artisan migrate --seed
 ```
+### 7. Install Git flow(to develop)
+[Git flow](https://www.atlassian.com/br/git/tutorials/comparing-workflows/gitflow-workflow)
+    * Branch production: master
+    * Branch development: dev
