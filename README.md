@@ -40,7 +40,13 @@ cp .env.example .env
 
 > To stop the containers, run `sail down`
 
-### 6. Preparations
+### 6. Install passport
+
+```sh
+sail artisan passport:install --uuids
+```
+
+### 7. Preparations
 
 ```sh
 sail artisan migrate
@@ -48,7 +54,8 @@ sail artisan key:generate
 sail artisan nova:publish
 sail artisan migrate --seed
 ```
-### 7. Install Git flow(to develop)
+
+### 8. Install Git flow(to develop)
 [Git flow](https://www.atlassian.com/br/git/tutorials/comparing-workflows/gitflow-workflow)
     * Branch production: master
     * Branch development: dev
