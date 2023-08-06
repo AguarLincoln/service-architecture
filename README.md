@@ -50,7 +50,7 @@ sail artisan passport:client --password
     
     With credentials generated from: 'sail artisan passport:client --password'
     
-
+eqweqw
 ```bash    
 curl --location 'http://0.0.0.0/oauth/token' \
 --header 'Accept: application/json' \
