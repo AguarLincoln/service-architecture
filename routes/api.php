@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\Company\CompanyLoginController;
 use App\Http\Controllers\Company\CompanyStoreController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,7 @@ Route::group([
 ], function () {
     //middleware without auth:api-company
     Route::post('/', CompanyStoreController::class);
+    Route::post('/login', CompanyLoginController::class);
 
 
     //middleware auth:api-company

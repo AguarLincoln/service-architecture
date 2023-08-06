@@ -44,14 +44,13 @@ cp .env.example .env
 
 ```sh
 sail artisan passport:install --uuids
+sail artisan passport:client --password
 ```
 
 ### 7. Preparations
 
 ```sh
 sail artisan migrate
-sail artisan key:generate
-sail artisan nova:publish
 sail artisan migrate --seed
 ```
 
