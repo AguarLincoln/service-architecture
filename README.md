@@ -1,4 +1,4 @@
-## Installation teste
+## Installation
 
 ### 1. Install docker
 
