@@ -27,7 +27,6 @@ Route::group([
 ], function () {
     //middleware without auth:api-company
     Route::post('/', CompanyStoreController::class);
-    Route::post('/login', CompanyLoginController::class);
 
 
     //middleware auth:api-company
