@@ -26,4 +26,9 @@ class Category extends Model
         'name',
         'photo',
     ];
+
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class, 'category_company');
+    }
 }

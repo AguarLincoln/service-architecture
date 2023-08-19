@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Arr;
 
 class SuccessfullResource extends JsonResource
@@ -11,7 +12,7 @@ class SuccessfullResource extends JsonResource
 
     public function __construct(
         private ?string $message = null,
-        private array $data = [],
+        private array|LengthAwarePaginator $data = [],
     ){}
     /**
      * Transform the resource into an array.
