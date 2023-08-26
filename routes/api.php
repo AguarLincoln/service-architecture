@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\Company\CompanyLoginController;
+use App\Http\Controllers\Category\CategoryShowController;
+use App\Http\Controllers\Category\CategoryStoreController;
 use App\Http\Controllers\Company\CompanyStoreController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,9 +33,20 @@ Route::group([
 
     //middleware auth:api-company
     Route::group(['middleware' => 'auth:api-company'], function () {
-        Route::get('/company', function () {
-            return 'Hello World';
-        });
+        
+    });
+});
+
+// Group middleware category
+
+Route::group([
+    'prefix' => 'category'
+], function () {
+
+    //middleware auth:api-category
+    Route::group(['middleware' => 'auth:api-company'], function () {
+        Route::post('/', CategoryStoreController::class);
+        Route::get('/', CategoryShowController::class);
     });
 });
 
