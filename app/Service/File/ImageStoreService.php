@@ -2,29 +2,20 @@
 
 namespace App\Service\File;
 
-use Carbon\Carbon;
-use Illuminate\Http\UploadedFile;
+use App\Service\File\Enum\Path;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
-class ImageStoreService
-{
-    const PATH = 'categories';
-
-    public function __construct(
-        
-    ){}
-    
-    
-    public function handle(UploadedFile $image): ?string
-    {
-        
-        $name = Carbon::now()->format('YmdHis') . '_' . $image->getClientOriginalName();
-
+class ImageStoreService extends BaseImage
+{  
+    public function handle(Path $path = null): ?string
+    {   
+        $path = $path ?? Path::CATEGORY;
+        $name = $this->getName();
         try{
             Storage::disk('local')->putFileAs(
-                self::PATH,
-                $image,
+                $path->value,
+                $this->image,
                 $name
             );
 
@@ -33,9 +24,8 @@ class ImageStoreService
             Log::error('ImageStoreService', [ 'error' => $e->getMessage()]);
             return null;
         }
-
-        
     }
+
 
     
 }

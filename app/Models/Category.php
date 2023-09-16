@@ -31,4 +31,9 @@ class Category extends Model
     {
         return $this->belongsToMany(Company::class, 'category_company');
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

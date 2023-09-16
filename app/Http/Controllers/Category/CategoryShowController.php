@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Category;
 
-use App\Data\Category\ShowCategoryData;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Category\ShowRequest;
 use App\Http\Resources\SuccessfullResource;
 use App\Service\Category\CategoryShowService;
 use Illuminate\Http\JsonResponse;

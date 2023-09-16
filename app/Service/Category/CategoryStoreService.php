@@ -4,6 +4,7 @@ namespace App\Service\Category;
 
 use App\Data\Category\StoreCategoryData;
 use App\Models\Category;
+use App\Service\File\Enum\Path;
 use App\Service\File\ImageStoreService;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +13,6 @@ use Illuminate\Support\Facades\Log;
 class CategoryStoreService
 {
     public function __construct(
-        private ImageStoreService $imageService
     ){}
     
     
@@ -22,19 +22,9 @@ class CategoryStoreService
         
         DB::beginTransaction();
 
-        if($data->photo && $data->photo instanceof UploadedFile){
-            $fileName = $this->imageService->handle($data->photo);
-            
-            if(!$fileName){
-                DB::rollBack();
-                return false;
-            }
-
-        }
-
         $category = new Category();
         $category->name = $data->name;
-        $category->photo = $fileName;
+        $category->photo = $this->getImageName($data->photo);
         
         try{
             if($category->save()){
@@ -54,5 +44,14 @@ class CategoryStoreService
         
     }
 
+    private function getImageName(?UploadedFile $image): ?string
+    {
+        if(!$image){
+            return null;
+        }
+        
+        $image =  new ImageStoreService($image);
+        return $image->handle(Path::CATEGORY);
+    }
     
 }

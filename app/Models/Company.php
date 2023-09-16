@@ -48,4 +48,8 @@ class Company extends Authenticatable
         {
             return $this->belongsToMany(Category::class, 'category_company');
         }
+        public function products()
+        {
+            return $this->hasMany(Product::class);
+        }
 }
